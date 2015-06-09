@@ -77,5 +77,13 @@ shelltitle "$ |sh"
 #   in the next window, and then open mutt and tail in windows 8 and 9
 #   respectively.
 #
+
 screen 1
+
+screen -t title  2
+stuff "command_to_run^M"
+
+screen -t syslog  2
+stuff "tail -F /var/log/syslog^M"
+
 screen 0
