@@ -1,0 +1,81 @@
+# ------------------------------------------------------------------------------
+# SCREEN SETTINGS
+# ------------------------------------------------------------------------------
+
+defutf8 on
+utf8 on
+encoding utf8 utf8
+defencoding utf8
+defc1 off
+startup_message off
+deflogin on
+autodetach on
+vbell off
+defmonitor off
+activity              "^G"
+bell                  "^G"
+pow_detach_msg        "BYE"
+vbell_msg             " *beep* "
+sorendition G0
+defscrollback 4096
+attrcolor b ".I"
+msgwait 2
+msgminwait 1
+version
+shell bash
+
+# ------------------------------------------------------------------------------
+# SCREEN KEYBINDINGS
+# ------------------------------------------------------------------------------
+
+# Remove some stupid / dangerous key bindings
+bind ^k
+#bind L
+bind ^\
+# Make them better
+bind \\ quit
+bind K kill
+bind I login on
+bind O login off
+bind } history
+
+bindkey "^[z" prev
+bindkey "^[x" next
+
+#bindkey "^[a" prev
+#bindkey "^[s" next
+
+#bindkey "^[q" prev
+#bindkey "^[w" next
+
+
+# ------------------------------------------------------------------------------
+# TERMINAL SETTINGS
+# ------------------------------------------------------------------------------
+
+term 	xterm-256color
+hardstatus off
+termcapinfo vt100 dl=5\E[M
+termcapinfo xterm*|rxvt*|kterm*|Eterm* 'hs:ts=\E]0;:fs=\007:ds=\E]0;screen\007'
+termcapinfo xterm*|linux*|rxvt*|Eterm* OP
+termcapinfo xterm 'is=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;4;6l'
+termcapinfo xterm|xterms|xs|rxvt ti@:te@
+defnonblock 5
+hardstatus lastline "%1`@%H - %l"
+backtick 1 1200 1200 whoami
+caption always "%{dd}%1`@%H | %{dd}%-w%50>%{= BW}%n %t%{-}%+w%< %-=% | %l"
+shelltitle "$ |sh"
+
+
+# ------------------------------------------------------------------------------
+# STARTUP SCREENS
+# ------------------------------------------------------------------------------
+
+# Example of automatically running some programs in windows on screen startup.
+#
+#   The following will open top in the first window, an ssh session to monkey
+#   in the next window, and then open mutt and tail in windows 8 and 9
+#   respectively.
+#
+screen 1
+screen 0
