@@ -1,7 +1,15 @@
 [ -z "$PS1" ] && return
 export PHONON_GST_AUDIOSINK=oss4sink
-export HISTCONTROL=ignoredups
-export HISTCONTROL=ignoreboth
+
+# http://unix.stackexchange.com/questions/1288/preserve-bash-history-in-multiple-terminal-windows
+# Avoid duplicates
+export HISTCONTROL=ignoredups:erasedups  
+# When the shell exits, append to the history file instead of overwriting it
+shopt -s histappend
+# After each command, append to the history file and reread it
+export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r"
+
+
 export EDITOR=vim
 shopt -s checkwinsize
 [ -x /usr/bin/lesspipe ] && eval "$(lesspipe)"
@@ -109,7 +117,7 @@ extract () {
        echo "'$1' is not a valid file!"
    fi
  }
-complete -W "$(<~/.ssh/hosts)" ssh
+#complete -W "$(<~/.ssh/hosts)" ssh
 
 export LESS_TERMCAP_mb=$'\E[01;31m' # begin blinking
 export LESS_TERMCAP_md=$'\E[01;38;5;74m' # begin bold
