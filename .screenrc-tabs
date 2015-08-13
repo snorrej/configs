@@ -1,0 +1,9 @@
+screen 1 htop
+
+screen -t title 2
+stuff "command_to_run^M"
+
+screen -t syslog 3
+stuff "tail -F /var/log/syslog^M"
+
+screen 1
