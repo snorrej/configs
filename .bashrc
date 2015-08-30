@@ -37,7 +37,7 @@ export PROMPT_COMMAND=prompt_command
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
 xterm-256color)
-PROMPT_COMMAND='prompt_command;echo -n -e "\033k\033\\";history -a; history -c; history -r'
+PROMPT_COMMAND='prompt_command;echo -n -e "\033k\033\\";history -a'
 ;;
 
 xterm*|rxvt*)
@@ -47,7 +47,7 @@ PROMPT_COMMAND='prompt_command;echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD/$HOME
     ;;
 screen)
 
-    PROMPT_COMMAND='prompt_command;echo -n -e "\033k\033\\";history -a; history -c; history -r'
+    PROMPT_COMMAND='prompt_command;echo -n -e "\033k\033\\";history -a'
     ;;
 *)
     ;;
@@ -62,6 +62,8 @@ alias egrep='egrep --color=auto'
 alias htop='htop -d 90'
 alias locate='locate -i'
 alias grep='grep -i'
+
+alias href='history -c ; history -r'
 
 bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'
