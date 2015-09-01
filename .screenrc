@@ -63,9 +63,10 @@ termcapinfo xterm*|linux*|rxvt*|Eterm* OP
 termcapinfo xterm 'is=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;4;6l'
 termcapinfo xterm|xterms|xs|rxvt ti@:te@
 defnonblock 5
-hardstatus lastline "%1`@%H - %l"
 backtick 1 1200 1200 whoami
-caption always "%{dd} %1`@%H | %{dd}%-w%50>%{= BW}%n %t%{-}%+w%< %-=% | %l "
+backtick 2 1200 1200 hostname --fqdn
+hardstatus lastline "%1`@%2` - %l"
+caption always "%{dd} %1`@%2` | %{dd}%-w%50>%{= BW}%n %t%{-}%+w%< %-=% | %l "
 shelltitle "$ |sh"
 
 

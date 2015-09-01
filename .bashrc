@@ -2,8 +2,9 @@
 [ -z "$PS1" ] && return
 
 # http://unix.stackexchange.com/questions/1288/preserve-bash-history-in-multiple-terminal-windows
+# http://unix.stackexchange.com/questions/18212/bash-history-ignoredups-and-erasedups-setting-conflict-with-common-history
 # Avoid duplicates
-export HISTCONTROL=ignoredups:erasedups  
+export HISTCONTROL=ignoreboth:erasedups  
 # When the shell exits, append to the history file instead of overwriting it
 shopt -s histappend
 # After each command, append to the history file and reread it
@@ -37,7 +38,7 @@ export PROMPT_COMMAND=prompt_command
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
 xterm-256color)
-PROMPT_COMMAND='prompt_command;echo -n -e "\033k\033\\";history -a'
+PROMPT_COMMAND='prompt_command;echo -n -e "\033k\033\\";history -n;history -w'
 ;;
 
 xterm*|rxvt*)
@@ -47,7 +48,7 @@ PROMPT_COMMAND='prompt_command;echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD/$HOME
     ;;
 screen)
 
-    PROMPT_COMMAND='prompt_command;echo -n -e "\033k\033\\";history -a'
+    PROMPT_COMMAND='prompt_command;echo -n -e "\033k\033\\";history -n;history -w'
     ;;
 *)
     ;;
