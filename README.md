@@ -1,1 +1,1 @@
-```wget -O install.sh https://raw.githubusercontent.com/snorrej/configs/master/install ; bash install.sh ; rm install.sh```
+```wget -O install.sh https://raw.githubusercontent.com/snorrej/configs/master/install.sh ; bash install.sh ; rm install.sh```

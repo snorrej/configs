@@ -6,7 +6,7 @@
 # Avoid duplicates
 export HISTCONTROL=ignoreboth:erasedups  
 # When the shell exits, append to the history file instead of overwriting it
-shopt -s histappend
+#shopt -s histappend # not needed, history is saved instantly
 # After each command, append to the history file and reread it
 #export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r"
 
