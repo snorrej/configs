@@ -1,2 +1,1 @@
-```wget -O .bashrc https://raw.githubusercontent.com/snorrej/configs/master/.bashrc
-wget -O .screenrc https://raw.githubusercontent.com/snorrej/configs/master/.screenrc```
+```wget -O install https://raw.githubusercontent.com/snorrej/configs/master/install ; bash install```
