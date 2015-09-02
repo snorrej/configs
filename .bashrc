@@ -38,7 +38,7 @@ export PROMPT_COMMAND=prompt_command
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
 xterm-256color)
-PROMPT_COMMAND='prompt_command;echo -n -e "\033k\033\\";history -n;history -w'
+PROMPT_COMMAND='prompt_command;echo -n -e "\033k\033\\"'
 ;;
 
 xterm*|rxvt*)
@@ -48,7 +48,7 @@ PROMPT_COMMAND='prompt_command;echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD/$HOME
     ;;
 screen)
 
-    PROMPT_COMMAND='prompt_command;echo -n -e "\033k\033\\";history -n;history -w'
+    PROMPT_COMMAND='prompt_command;echo -n -e "\033k\033\\"'
     ;;
 *)
     ;;
@@ -153,3 +153,16 @@ echo -n "Restoring screen session in "
 echo -n . ; sleep 0.3 ; echo -n . ; sleep 0.3 ; echo -n . ; sleep 0.3 ; echo -n "3" ; sleep 0.3 ; echo -n . ; sleep 0.3 ; echo -n . ; sleep 0.3 ; echo -n . ; sleep 0.3 ; echo -n 2 ; sleep 0.3 ; echo -n . ; sleep 0.3 ; echo -n . ; sleep 0.3 ; echo -n . ; sleep 0.3 ; echo -n "1" ; sleep 0.3 ; echo -n . ; sleep 0.3 ; echo -n . ; sleep 0.3 ; echo -n . ; sleep 0.3; echo 0
 screen -a -DR -S mainscreen
 fi
+
+
+
+#https://github.com/rcaloras/bash-preexec
+
+[[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
+
+preexec() { history -n ; history -w ; }
+#precmd() { echo "printing the prompt"; }
+
+
+
+
