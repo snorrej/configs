@@ -155,14 +155,15 @@ screen -a -DR -S mainscreen
 fi
 
 
-
-#https://github.com/rcaloras/bash-preexec
-
-[[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
-
-preexec() { history -n ; history -w ; }
-#precmd() { echo "printing the prompt"; }
-
-
-
-
+#http://scriptsandoneliners.blogspot.no/2014/12/fixing-bash-history-impl-zshpreexec.html
+function my_history() { 
+ history -a; 
+ history -c; 
+ history -r; 
+} 
+  ### ZSH Pre-exec style functionality hack using DEBUG
+set -o functrace > /dev/null 2>&1
+shopt -s extdebug > /dev/null 2>&1
+export PROMPT_COMMAND="my_history; ${PROMPT_COMMAND}";
+trap 'my_history' DEBUG;
+alias h="history -a; history -c; history -r; history" 
