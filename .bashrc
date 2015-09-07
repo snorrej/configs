@@ -17,6 +17,15 @@ HISTFILESIZE=100000000
 HISTSIZE=100000
 
 
+function hclean() {
+  cat ~/.bash_history | nl | sort -r -k 2 | uniq -f 1 | sort -n | cut -f 2 > ~/.bash_history_tmp ;
+  mv ~/.bash_history_tmp ~/.bash_history ;
+  }
+
+hclean
+
+
+
 [ -x /usr/bin/lesspipe ] && eval "$(lesspipe)"
 
 
@@ -157,8 +166,7 @@ fi
 
 #http://scriptsandoneliners.blogspot.no/2014/12/fixing-bash-history-impl-zshpreexec.html
 function my_history() { 
- history -n; 
- history -w;  
+ history -a; 
 } 
   ### ZSH Pre-exec style functionality hack using DEBUG
 set -o functrace > /dev/null 2>&1
