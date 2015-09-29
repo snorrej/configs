@@ -22,7 +22,7 @@ function hclean() {
   mv ~/.bash_history_tmp ~/.bash_history ;
   }
 
-hclean
+#hclean
 
 
 
@@ -108,7 +108,7 @@ function apt-history(){
 }
 
 
-
+alias wanip='dig +short myip.opendns.com @resolver1.opendns.com'
 
 
 

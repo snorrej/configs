@@ -25,6 +25,9 @@ msgminwait 1
 version
 shell bash
 
+# disable Ctrl-S/Ctrl-Q "flow control"
+defflow off
+
 # ------------------------------------------------------------------------------
 # SCREEN KEYBINDINGS
 # ------------------------------------------------------------------------------
